@@ -44,7 +44,7 @@ namespace LoginProject.Controllers
 			{
 				return NotFound("cannot found");
 			}
-			if (user.IsVerified == "False" || user.IsVerified == "True")
+			if (user.IsVerified == "False")
 			{
 				return BadRequest("Please verify your acount before loggin in");
 			}
@@ -121,8 +121,6 @@ namespace LoginProject.Controllers
 				return BadRequest("Wrong token");
 			if (user.IsVerified == "False")
 				user.IsVerified = "True";
-			else if (user.IsVerified == "True")
-				user.IsVerified = "True-True";
 			await _context.SaveChangesAsync();
 			return Ok("Mail verified successfully");
 
